@@ -18,13 +18,13 @@
         "operatorsAliases": false
     },
     "production": {
-        "username": "root",
-        "password": "null",
-        "database": "database_production",
+        "username": "dqqbzgzjrqcvlm",
+        "password": "4f03b2064a94592927112647bba31b2faa6af262ab0b4a80109cdf673f5cdc5e",
+        "database": "d7crcb8fnokgi6",
         "host": "ec2-184-73-216-48.compute-1.amazonaws.com",
         "dialect": "postgres",
         "logging": false,
         "operatorsAliases": false,
-        "use_env_variable": "postgresql-rectangular-16483"
+        "postgresql-rectangular-16483": "postgres://dqqbzgzjrqcvlm:4f03b2064a94592927112647bba31b2faa6af262ab0b4a80109cdf673f5cdc5e@ec2-184-73-216-48.compute-1.amazonaws.com:5432/d7crcb8fnokgi6"
     }
 }
