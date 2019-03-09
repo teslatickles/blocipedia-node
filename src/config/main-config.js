@@ -14,14 +14,14 @@ module.exports = {
         app.set("view engine", "ejs");
         app.use(logger('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
-        // app.use(expressValidator());
+        app.use(expressValidator());
         app.use(session({
             secret: process.env.cookieSecret,
             resave: false,
             saveUninitialized: false,
             cookie: { maxAge: 1.21e+9 }
         }));
-        // app.use(flash());
+        app.use(flash());
         passportConfig.init(app);
         app.use((req, res, next) => {
             res.locals.currentUser = req.user;
