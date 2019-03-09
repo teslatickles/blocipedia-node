@@ -2,7 +2,7 @@
     "development": {
         "username": "postgres",
         "password": null,
-        "database": "blocipedia-dev",
+        "database": "blocipedia",
         "host": "127.0.0.1",
         "dialect": "postgres",
         "logging": false,
@@ -21,7 +21,7 @@
         "username": "root",
         "password": "null",
         "database": "database_production",
-        "host": "127.0.0.1",
+        "host": "ec2-184-73-216-48.compute-1.amazonaws.com",
         "dialect": "postgres",
         "logging": false,
         "operatorsAliases": false,
