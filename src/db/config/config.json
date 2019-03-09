@@ -18,13 +18,13 @@
         "operatorsAliases": false
     },
     "production": {
-        "username": "",
-        "password": "",
-        "database": "",
-        "host": "",
+        "username": "root",
+        "password": "null",
+        "database": "database_production",
+        "host": "127.0.0.1",
         "dialect": "postgres",
         "logging": false,
         "operatorsAliases": false,
-        "HEROKU_POSTGRESQL_CRIMSON_URL": ""
+        "use_env_variable": "postgresql-rectangular-16483"
     }
 }
