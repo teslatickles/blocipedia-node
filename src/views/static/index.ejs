@@ -11,10 +11,10 @@
     <!-- Page Content -->
     <main class="container">
         <!-- Jumbotron Header -->
-        <header class="jumbotron my-4">
-            <h1 class="display-3">Welcome to Blocipedia</h1>
+        <header class="jumbotron my-4" id="header">
+            <h1 class="display-3">Blocipedia</h1>
             <p class="lead">An application for users to share encyclopedia articles.</p>
-            <a href="/users/sign_up" class="btn btn-primary btn-lg">Sign up</a>
+            <a href="/users/sign_up" class="btn btn-primary btn-lg" id="sign_up_button">Sign up</a>
         </header>
 
         <!-- Page Features -->
@@ -22,12 +22,12 @@
 
             <section class="col-lg-4">
                 <h4 class="card-title">Post</h4>
-                <p class="card-text">Share your thoughts about subjects that are important to you.</p>
+                <p class="card-text">Share your knowledge about subjects that are important to you.</p>
             </section>
 
             <section class="col-lg-4">
                 <h4 class="card-title">Contribute</h4>
-                <p class="card-text">Your opinion counts! But you have to make yourself heard first!</p>
+                <p class="card-text">Improve articles by correcting information!</p>
             </section>
 
             <section class="col-lg-4">
@@ -36,6 +36,25 @@
             </section>
         </section>
         <!-- /.row -->
+
+        <section class="row text-center">
+
+            <section class="col-lg-4">
+                <h4 class="card-title">Premium Plan</h4>
+                <a href="" class="btn btn-danger btn-med">Upgrade!</a>
+            </section>
+
+            <section class="col-lg-4">
+                <h4 class="card-title"></h4>
+                <p class="card-text"></p>
+            </section>
+
+            <section class="col-lg-4">
+                <h4 class="card-title">Free Plan</h4>
+                <a href="" class="btn btn-warning btn-med">Free!</a>
+            </section>
+        </section>
+
     </main>
     <!-- /.container -->
     <% include ./partials/baseScripts.ejs %>

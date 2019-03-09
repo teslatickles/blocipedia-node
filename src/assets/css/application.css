@@ -2,3 +2,24 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: #fad390;
+}
+#header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    box-shadow: 3px 3px 3px 3px;
+    color: #78e08f;
+    background-color: #006266;
+}
+#sign_up_button{
+    display: inline-flex;
+    color: #D980FA;
+    background: #5758BB;
+    box-shadow: 2px 2px 2px;
+    text-align: center;
+    width: 12%;
+}
