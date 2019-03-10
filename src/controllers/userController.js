@@ -31,7 +31,7 @@ module.exports = {
             }
         });
         console.log(JSON.stringify(req.body.email));
-        sgMail.setApiKey('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');
+        sgMail.setApiKey('');
         const msg = {
             to: JSON.stringify(req.body.email),
             from: 'hunterhartline@gmail.com',
