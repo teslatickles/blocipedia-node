@@ -1,5 +1,6 @@
 const userQueries = require("../db/queries.users.js");
 const passport = require("passport");
+const sgMail = require('@sendgrid/mail');
 
 module.exports = {
 
@@ -29,5 +30,34 @@ module.exports = {
                 })
             }
         });
+        console.log(JSON.stringify(req.body.email));
+        sgMail.setApiKey('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');
+        const msg = {
+            to: JSON.stringify(req.body.email),
+            from: 'hunterhartline@gmail.com',
+            subject: 'You have created an account',
+            text: `You're username is ${req.body.username} and password is ${req.body.password}`,
+            html: '<strong>Thank you!</strong>',
+        };
+        sgMail.send(msg);
+    },
+    signInForm(req, res, next) {
+        res.render("users/sign_in");
+    },
+    signIn(req, res, next) {
+        passport.authenticate("local")(req, res, function () {
+            if (!req.user) {
+                req.flash("notice", "Sign in failed. Please try again.")
+                res.redirect("/users/sign_in");
+            } else {
+                req.flash("notice", "You've successfully signed in!");
+                res.redirect("/");
+            }
+        })
+    },
+    signOut(req, res, next) {
+        req.logout();
+        req.flash("notice", "You've successfully signed out!");
+        res.redirect("/");
     }
 }

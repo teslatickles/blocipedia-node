@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("../db/models/user.js").User;
+const User = require("../db/models").User;
 const authHelper = require("../auth/helpers");
 
 module.exports = {
@@ -18,7 +18,6 @@ module.exports = {
                 where: { email }
             })
                 .then((user) => {
-
                     // #4
                     if (!user || !authHelper.comparePass(password, user.password)) {
                         return done(null, false, { message: "Invalid email or password" });

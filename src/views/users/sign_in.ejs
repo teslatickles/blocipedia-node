@@ -11,18 +11,17 @@
 
     <main class="container">
 
+        <% include ../static/partials/messages.ejs %>
 
-        <% include ../static/partials/messages %>
+        <h1>Sign in</h1>
 
-        <h1>Sign up</h1>
-
-        <form action="/users" method="post">
+        <form action="/users/sign_in" method="post">
 
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" name="username" aria-describedby="usernameHelp"
-                    placeholder="Username">
-                <small class="text-muted" id="usernameHelp">username must be more than 3 characters in length</small>
+                    placeholder="Enter username">
+                <small class="text-muted" id="emailHelp">username must be valid</small>
             </div>
 
             <div class="form-group">
@@ -39,13 +38,7 @@
                 <small class="text-muted" id="passwordHelp">password must match confirmation below</small>
             </div>
 
-            <div class="form-group">
-                <label for="passwordConfirmation">Password confirmation</label>
-                <input type="password" class="form-control" name="passwordConfirmation" aria-describedby="passwordHelp"
-                    placeholder="Enter password confirmation">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Sign up</button>
+            <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
     </main>
 

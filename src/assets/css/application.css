@@ -3,14 +3,18 @@
     padding: 0;
 }
 body{
+    margin-top: 55px;
+    padding-top: 10px;
     background-color: #fad390;
 }
 #header{
     display: flex;
+    height: 20%;
     flex-direction: column;
     align-items: center;
     justify-items: center;
     text-align: center;
+    margin-top: 15px;
     box-shadow: 3px 3px 3px 3px;
     color: #78e08f;
     background-color: #006266;
