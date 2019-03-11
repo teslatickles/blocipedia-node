@@ -1,25 +1,22 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var User = sequelize.define('User', {
-        email: {
+    var Wiki = sequelize.define('Wiki', {
+        title: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        password: {
+        body: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+        private: DataTypes.BOOLEAN
     }, {});
-    User.associate = function (models) {
+    Wiki.associate = function (models) {
         // associations can be defined here
-        User.hasMany(models.Wiki, {
+        Wiki.belongsTo(models.User, {
             foreignKey: "id",
-            as: "wikis"
+            onDelete: "CASCADE"
         });
     };
-    return User;
+    return Wiki;
 };

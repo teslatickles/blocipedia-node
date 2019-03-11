@@ -32,6 +32,7 @@ module.exports = {
         });
         console.log(JSON.stringify(req.body.email));
         sgMail.setApiKey('');
+
         const msg = {
             to: JSON.stringify(req.body.email),
             from: 'hunterhartline@gmail.com',
