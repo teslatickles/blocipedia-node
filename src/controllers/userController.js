@@ -31,7 +31,8 @@ module.exports = {
             }
         });
         console.log(JSON.stringify(req.body.email));
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        sgMail.setApiKey('');
+
         const msg = {
             to: JSON.stringify(req.body.email),
             from: 'hunterhartline@gmail.com',
