@@ -1,4 +1,5 @@
 const wikiQueries = require("../db/queries.wiki.js");
+const Authorizer = require("../policies/application");
 
 module.exports = {
     index(req, res, next) {
@@ -11,15 +12,25 @@ module.exports = {
         })
     },
     new(req, res, next) {
-        res.render('wikis/new');
+        const authorized = new Authorizer(req.user).new();
+
+        if (authorized) {
+            res.render('wikis/new');
+        } else {
+            req.flash("notice", "You are not authorized to do that.");
+            res.redirect("/wiki");
+        }
     },
     create(req, res, next) {
         let newWiki = {
             title: req.body.title,
             body: req.body.body,
-            private: false
+            private: false,
+            userId: req.user.id
         };
+        console.log(newWiki);
         wikiQueries.addWiki(newWiki, (err, wiki) => {
+            console.log(wiki);
             if (err) {
                 console.log(err);
                 res.redirect(500, "/wikis/new");
@@ -51,7 +62,15 @@ module.exports = {
             if (err || wiki === null) {
                 res.redirect(404, "/");
             } else {
-                res.render("wikis/edit", { wiki });
+                const authorized = new Authorizer(req.user, wiki).edit();
+                console.log(req.user);
+                console.log(wiki.userId);
+                if (authorized) {
+                    res.render("wikis/edit", { wiki });
+                } else {
+                    req.flash("You are not authorized to do that.");
+                    res.redirect(`/wiki`);
+                }
             }
         });
     },
