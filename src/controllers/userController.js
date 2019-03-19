@@ -60,5 +60,28 @@ module.exports = {
         req.logout();
         req.flash("notice", "You've successfully signed out!");
         res.redirect("/");
+    },
+    upgradeView(req, res, next) {
+        res.render("users/payment");
+    },
+    upgrade(req, res, next) {
+        var stripe = require("stripe")("sk_test_EKtY6NiSm3fqx8MHF7ux3L6G");
+
+        // Token is created using Checkout or Elements!
+        // Get the payment token ID submitted by the form:
+        const token = req.body.stripeToken; // Using Express
+
+        (async () => {
+            const charge = await stripe.charges.create({
+                amount: 1500,
+                currency: 'usd',
+                description: 'Premium account',
+                source: token,
+            });
+        })();
+        userQueries.upgrade(req.id, (err, user) => {
+            res.render("users/premium");
+            console.log(user);
+        });
     }
 }

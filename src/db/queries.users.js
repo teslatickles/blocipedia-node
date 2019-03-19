@@ -3,6 +3,15 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
     // #2
+    getUser(id, callback) {
+        return User.findByPk(id)
+            .then((user) => {
+                callback(null, user);
+            })
+            .catch((err) => {
+                callback(err);
+            })
+    },
     createUser(newUser, callback) {
 
         // #3
@@ -21,6 +30,23 @@ module.exports = {
             .catch((err) => {
                 callback(err);
             })
+    },
+    upgrade(id, callback) {
+        return User.findByPk(id)
+            .then((user) => {
+                if (!user) {
+                    return callback("User not found");
+                }
+                user.update(updatedUser, {
+                    role: 1
+                })
+                    .then(() => {
+                        callback(null, user);
+                        console.log(user);
+                    })
+                    .catch((err) => {
+                        callback(err);
+                    })
+            })
     }
-
 }
