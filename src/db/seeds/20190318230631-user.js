@@ -15,7 +15,7 @@ const hashedPassword2 = bcrypt.hashSync(password2, salt2);
 users.push({
     email: "hunterh@gamil.com",
     password: hashedPassword1,
-    role: 0,
+    role: 1,
     username: "hunterh1",
     createdAt: new Date(),
     updatedAt: new Date()
