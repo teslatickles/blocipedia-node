@@ -78,10 +78,21 @@ module.exports = {
                 description: 'Premium account',
                 source: token,
             });
-        })();
-        userQueries.upgrade(req.id, (err, user) => {
-            res.render("users/premium");
-            console.log(user);
-        });
+        })(),
+            userQueries.upgrade(req.user.id, (err, user) => {
+                res.render("users/premium");
+                console.log(req.user);
+            });
+    },
+    downgrade(req, res, next) {
+        if (req.user.role === 0) {
+            req.flash("notice", "You are not a premium user!");
+            res.redirect("/");
+        } else {
+            userQueries.downgrade(req.user.id, (err, user) => {
+                req.flash("notice", "Your account has been downgraded!");
+                res.redirect('/');
+            })
+        }
     }
 }

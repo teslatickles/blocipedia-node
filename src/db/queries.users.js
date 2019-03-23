@@ -38,12 +38,29 @@ module.exports = {
                 if (!user) {
                     return callback("User not found");
                 }
-                user.update(updatedUser, {
+                user.update({
                     role: 1
                 })
                     .then(() => {
                         callback(null, user);
-                        console.log(user);
+                        // console.log(user);
+                    })
+                    .catch((err) => {
+                        callback(err);
+                    })
+            })
+    },
+    downgrade(id, callback) {
+        return User.findByPk(id)
+            .then((user) => {
+                if (!user) {
+                    return callback("User not found");
+                }
+                user.update({
+                    role: 0
+                })
+                    .then(() => {
+                        callback(null, user);
                     })
                     .catch((err) => {
                         callback(err);

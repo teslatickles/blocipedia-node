@@ -15,10 +15,10 @@
 
         <ul class="list-group">
 
-
+            <% console.log(currentUser.role) %>
             <% wikis.forEach((wiki) => { %>
 
-            <% if (wiki.private === false || wiki.private === true) { %>
+            <% if (wiki.private === false || wiki.private === true && currentUser.role === 1) { %>
             <!-- #2 -->
             <li class="list-group-item">
                 <a href="/wikis/<%= wiki.id %>">
